@@ -257,6 +257,122 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Collapsible Guide */
+        .article-guide {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .guide-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            background: #f8fafc;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .guide-header:hover {
+            background: #f1f5f9;
+        }
+
+        .guide-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .guide-header-left svg {
+            width: 20px;
+            height: 20px;
+            color: var(--burgundy);
+        }
+
+        .guide-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .guide-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            color: var(--burgundy);
+            font-weight: 500;
+        }
+
+        .guide-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+
+        .article-guide.expanded .guide-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .guide-content {
+            display: none;
+            padding: 1.25rem;
+            border-top: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .article-guide.expanded .guide-content {
+            display: block;
+        }
+
+        .guide-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .guide-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .guide-section-title {
+            font-weight: 600;
+            color: var(--burgundy);
+            font-size: 0.9rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .guide-section-title span {
+            background: var(--burgundy);
+            color: white;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+        }
+
+        .guide-section p {
+            font-size: 0.85rem;
+            color: var(--dark-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .guide-section ul {
+            margin: 0.25rem 0 0 1.25rem;
+            padding: 0;
+        }
+
+        .guide-section li {
+            font-size: 0.85rem;
+            color: var(--dark-secondary);
+            margin-bottom: 0.2rem;
+        }
+
+        .guide-section li:last-child {
+            margin-bottom: 0;
+        }
+
         input[type="text"],
         input[type="email"],
         input[type="url"],
@@ -767,70 +883,10 @@
                 </div>
             </section>
 
-            <!-- Section 3: News/Update Post -->
+            <!-- Section 3: Event Listing -->
             <section class="form-section">
                 <div class="section-header">
                     <p class="section-number">Section 3</p>
-                    <h2 class="section-title">News or Update Post</h2>
-                    <p class="section-optional">Optional</p>
-                </div>
-                <div class="section-body">
-                    <div class="field-group">
-                        <label class="field-label">Do you have a news post or update for the website? <span class="required">*</span></label>
-                        <p class="field-hint">Progress updates, announcements, achievements, collaborations worth featuring.</p>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="has-post" value="yes" required>
-                                <span>Yes</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="has-post" value="no" required>
-                                <span>No</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="conditional-fields" id="post-fields">
-                        <div class="field-group">
-                            <label class="field-label" for="post-title">Post title <span class="required">*</span></label>
-                            <input type="text" id="post-title" name="post-title">
-                        </div>
-                        <div class="field-group">
-                            <label class="field-label" for="post-description">Full description <span class="required">*</span></label>
-                            <p class="field-hint">Write the complete post content as you would like it to appear on the website.</p>
-                            <textarea id="post-description" name="post-description" style="min-height: 180px;"></textarea>
-                        </div>
-                        <div class="field-group">
-                            <label class="field-label">Cover image <span class="required">*</span></label>
-                            <p class="field-hint">Main image for the post. Recommended: 1200x630 pixels.</p>
-                            <label class="file-upload">
-                                <svg class="file-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                                <p class="file-upload-text">Click to upload or drag and drop</p>
-                                <p class="file-upload-hint">JPG, PNG (max 10MB)</p>
-                                <input type="file" name="post-image" accept=".jpg,.jpeg,.png">
-                            </label>
-                        </div>
-                        <div class="field-group">
-                            <label class="field-label">Additional images or documents (optional)</label>
-                            <label class="file-upload">
-                                <svg class="file-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-                                </svg>
-                                <p class="file-upload-text">Click to upload or drag and drop</p>
-                                <p class="file-upload-hint">Images, PDFs, Word documents (max 10MB each)</p>
-                                <input type="file" name="post-files" multiple accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx">
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 4: Event Listing -->
-            <section class="form-section">
-                <div class="section-header">
-                    <p class="section-number">Section 4</p>
                     <h2 class="section-title">Event Listing</h2>
                     <p class="section-optional">Optional</p>
                 </div>
@@ -890,6 +946,158 @@
                                 <p class="file-upload-text">Click to upload or drag and drop</p>
                                 <p class="file-upload-hint">JPG, PNG (max 10MB)</p>
                                 <input type="file" name="event-image" accept=".jpg,.jpeg,.png">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Article Submission -->
+            <section class="form-section">
+                <div class="section-header">
+                    <p class="section-number">Section 4</p>
+                    <h2 class="section-title">Article Submission</h2>
+                </div>
+                <div class="section-body">
+                    <!-- Collapsible Article Structure Guide - Always visible -->
+                    <div class="article-guide" id="articleGuide">
+                        <div class="guide-header" onclick="toggleGuide()">
+                            <div class="guide-header-left">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                <span class="guide-title">Article Structure Guide</span>
+                            </div>
+                            <span class="guide-toggle">
+                                <span id="guideToggleText">Show guide</span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="guide-content">
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>1</span> Title</p>
+                                <p>A clear, compelling headline that captures the core message.</p>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>2</span> Subtitle (optional)</p>
+                                <p>One sentence summarizing the article's purpose or main achievement.</p>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>3</span> Opening Paragraph</p>
+                                <ul>
+                                    <li>Sets the scene</li>
+                                    <li>Introduces the topic or event</li>
+                                    <li>Gives readers a reason to continue reading</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>4</span> Context / Background</p>
+                                <ul>
+                                    <li>Why this topic matters</li>
+                                    <li>How it fits into the organisation's mission or ongoing projects</li>
+                                    <li>Any relevant history or previous milestones</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>5</span> Main Story / Key Highlights</p>
+                                <p>Break this section into short paragraphs or subheadings:</p>
+                                <ul>
+                                    <li>What happened?</li>
+                                    <li>Who was involved?</li>
+                                    <li>Key activities, achievements, quotes, or outcomes</li>
+                                    <li>Photos can be placed here to illustrate the narrative</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>6</span> Impact / Added Value</p>
+                                <ul>
+                                    <li>What this means for the community, project, or beneficiaries</li>
+                                    <li>How it contributes to broader goals (e.g., prevention, innovation, patients, policy)</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>7</span> Next Steps (optional)</p>
+                                <ul>
+                                    <li>Upcoming activities, deliverables, or future plans</li>
+                                    <li>Call for participation or engagement (if relevant)</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>8</span> Closing Paragraph</p>
+                                <ul>
+                                    <li>A strong, concise closing message</li>
+                                    <li>Emphasize the significance, gratitude, or ongoing commitment</li>
+                                </ul>
+                            </div>
+                            <div class="guide-section">
+                                <p class="guide-section-title"><span>9</span> Credits / Acknowledgments (optional)</p>
+                                <ul>
+                                    <li>Partners, contributors, institutions involved</li>
+                                    <li>Funding source (e.g., EU4Health)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label">Do you have a written article to submit for the website? <span class="required">*</span></label>
+                        <p class="field-hint">News stories, project updates, event reports, or feature articles.</p>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="has-article" value="yes" required onchange="toggleArticleFields()">
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="has-article" value="no" required onchange="toggleArticleFields()">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="conditional-fields" id="article-fields" style="display: none;">
+                        <div class="field-group">
+                            <label class="field-label">Article title <span class="required">*</span></label>
+                            <input type="text" name="article-title">
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Brief summary / Abstract</label>
+                            <p class="field-hint">A short description of what the article is about (1-2 sentences).</p>
+                            <textarea name="article-summary" style="min-height: 80px;"></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Keywords</label>
+                            <p class="field-hint">Key terms that describe the article's topic (comma-separated).</p>
+                            <input type="text" name="article-keywords" placeholder="e.g., cancer prevention, screening, early detection">
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">ORCID (optional)</label>
+                            <p class="field-hint">Your ORCID identifier, if you have one. <a href="https://orcid.org/" target="_blank" style="color: var(--burgundy);">What is ORCID?</a></p>
+                            <input type="text" name="article-orcid" placeholder="e.g., 0000-0001-2345-6789">
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Upload your article <span class="required">*</span></label>
+                            <p class="field-hint">Please use the structure guide above for best results.</p>
+                            <label class="file-upload">
+                                <svg class="file-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                </svg>
+                                <p class="file-upload-text">Click to upload or drag and drop</p>
+                                <p class="file-upload-hint">Word documents or PDFs (max 10MB)</p>
+                                <input type="file" name="article-file" accept=".doc,.docx,.pdf">
+                            </label>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Supporting images (optional)</label>
+                            <p class="field-hint">Photos, graphics, or illustrations to accompany the article.</p>
+                            <label class="file-upload">
+                                <svg class="file-upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <p class="file-upload-text">Click to upload or drag and drop</p>
+                                <p class="file-upload-hint">JPG, PNG (max 10MB each)</p>
+                                <input type="file" name="article-images" multiple accept=".jpg,.jpeg,.png">
                             </label>
                         </div>
                     </div>
@@ -995,27 +1203,6 @@
             });
         });
 
-        // Handle Yes/No gateway for Post section
-        const postRadios = document.querySelectorAll('input[name="has-post"]');
-        const postFields = document.getElementById('post-fields');
-        const postInputs = postFields.querySelectorAll('input, textarea');
-
-        postRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes') {
-                    postFields.classList.add('visible');
-                    document.getElementById('post-title').setAttribute('required', 'required');
-                    document.getElementById('post-description').setAttribute('required', 'required');
-                } else {
-                    postFields.classList.remove('visible');
-                    postInputs.forEach(input => {
-                        input.removeAttribute('required');
-                        if (input.type !== 'file') input.value = '';
-                    });
-                }
-            });
-        });
-
         // Handle Yes/No gateway for Event section
         const eventRadios = document.querySelectorAll('input[name="has-event"]');
         const eventFields = document.getElementById('event-fields');
@@ -1068,6 +1255,40 @@
                 toast.classList.remove('visible');
             }, 4000);
         });
+
+        // Handle Yes/No gateway for Article section
+        function toggleArticleFields() {
+            const articleRadios = document.querySelectorAll('input[name="has-article"]');
+            const articleFields = document.getElementById('article-fields');
+            const articleInputs = articleFields.querySelectorAll('input, textarea');
+            
+            const selectedValue = document.querySelector('input[name="has-article"]:checked')?.value;
+            
+            if (selectedValue === 'yes') {
+                articleFields.style.display = 'block';
+                document.querySelector('input[name="article-title"]').setAttribute('required', 'required');
+            } else {
+                articleFields.style.display = 'none';
+                articleInputs.forEach(input => {
+                    input.removeAttribute('required');
+                    if (input.type !== 'file') input.value = '';
+                });
+            }
+        }
+
+        // Toggle collapsible article guide
+        function toggleGuide() {
+            const guide = document.getElementById('articleGuide');
+            const toggleText = document.getElementById('guideToggleText');
+            
+            if (guide.classList.contains('expanded')) {
+                guide.classList.remove('expanded');
+                toggleText.textContent = 'Show guide';
+            } else {
+                guide.classList.add('expanded');
+                toggleText.textContent = 'Hide guide';
+            }
+        }
     </script>
 </body>
 </html>
